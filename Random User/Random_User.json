@@ -1,0 +1,30 @@
+
+document.getElementById("novaBroma").addEventListener("click", function () {
+
+    fetch("https://api.chucknorris.io/jokes/random")
+        .then(response => response.json())
+        .then(data => {
+            console.log(data);
+            document.getElementById("broma").innerHTML = data.value;
+        })
+        .catch(error => console.log("Error:", error));
+
+});
+
+
+
+document.getElementById("btnNouUsuari").addEventListener("click", function () {
+
+    fetch("https://randomuser.me/api/")
+        .then(response => response.json())
+        .then(data => {
+            console.log(data);
+
+            // Mostramos el nombre del usuario.
+            const usuari = data.results[0];
+            document.getElementById("usuari").textContent =
+                usuari.name.first + " " + usuari.name.last;
+        })
+        .catch(error => console.log("Error:", error));
+
+});
